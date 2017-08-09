@@ -751,7 +751,12 @@ class Frontend_Uploader {
 	 */
 	function add_menu_items() {
 		add_media_page( __( 'Manage UGC', 'frontend-uploader' ), __( 'Manage UGC', 'frontend-uploader' ), $this->manage_permissions, 'manage_frontend_uploader', array( $this, 'admin_list' ) );
-		foreach ( (array) $this->settings['enabled_post_types'] as $cpt ) {
+
+		$arrEnabledPostTypes = array();
+		if ( isset( $this->settings['enabled_post_types'] ) ) {
+			$arrEnabledPostTypes = (array) $this->settings['enabled_post_types'];
+		}
+		foreach ( $arrEnabledPostTypes as $cpt ) {
 			if ( $cpt == 'post' ) {
 				add_posts_page( __( 'Manage UGC Posts', 'frontend-uploader' ), __( 'Manage UGC', 'frontend-uploader' ), $this->manage_permissions, 'manage_frontend_uploader_posts', array( $this, 'admin_posts_list' ) );
 				continue;
