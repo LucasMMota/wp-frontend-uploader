@@ -45,7 +45,7 @@ class FU_WP_Visual_Form {
 		if ( in_array( $current->id, $arrPostTypesAllowed, true ) ) {
 			?>
             <a href="/?TB_inline&inlineId=fu-btn-visual-form&width=500&height=400"
-               class="button add_media hide-if-no-js thickbox"><span class="dashicons dashicons-welcome-widgets-menus"></span> Add FU Form </a>
+               class="button add_media hide-if-no-js thickbox"><span class="dashicons dashicons-welcome-widgets-menus"></span><?php echo apply_filters('fu_visual_form_button_name', 'Add FU Form') ?></a>
 
             <!--            <input type="hidden" id="abril-shortcode-btn-votar-finalista-id">-->
             <!--            <input type="hidden" id="abril-shortcode-btn-votar-premio-id">-->
