@@ -35,6 +35,7 @@ require_once FU_ROOT . '/lib/php/class-html-helper.php';
 require_once FU_ROOT . '/lib/php/settings-api/class.settings-api.php';
 require_once FU_ROOT . '/lib/php/functions.php';
 require_once FU_ROOT . '/lib/php/frontend-uploader-settings.php';
+require_once FU_ROOT . '/lib/php/class-frontend-uploader-wp-visual-form.php';
 
 class Frontend_Uploader {
 
@@ -110,6 +111,9 @@ class Frontend_Uploader {
 		// Hiding not approved attachments from Media Gallery
 		// @since core 3.5-beta-1
 		add_filter( 'posts_where', array( $this, 'filter_posts_where' ) );
+
+		// Visual Form Editor
+		add_action( 'media_buttons', array( FU_WP_Visual_Form::class, 'add_btn_fu_visual_form' ), 999 );
 
 		$this->allowed_mime_types = $this->_get_mime_types();
 		// Configuration filter to change manage permissions
